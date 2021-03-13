@@ -20,9 +20,9 @@ private:
     {
     public:
         chrono::system_clock::time_point time_stamp;
-        const char *tag;
+        string tag;
 
-        info_time(chrono::system_clock::time_point _time_stamp, const char *_tagname)
+        info_time(chrono::system_clock::time_point _time_stamp, string _tagname)
         {
             time_stamp = _time_stamp;
             tag = _tagname;
@@ -33,33 +33,33 @@ private:
 public:
     console() { this->Time_Arr = {}; };
     ~console() { this->Time_Arr.clear(); };
-    void log(const char *arg);
-    void write(const char *arg);
-    void error(const char *arg);
-    void warn(const char *arg);
+    void log(string arg);
+    void write(string arg);
+    void error(string arg);
+    void warn(string arg);
     void clear();
-    void time(const char *tag);
+    void time(string tag);
     void time();
-    void timeEnd(const char *tag);
+    void timeEnd(string tag);
     void timeEnd();
 } console;
 
-void console::log(const char *arg)
+void console::log(string arg)
 {
     cout << arg << endl;
 }
 
-void console::write(const char *arg)
+void console::write(string arg)
 {
     cout << arg;
 }
 
-void console::error(const char *arg)
+void console::error(string arg)
 {
     cerr << ANSI_COLOR_RED << arg << ANSI_COLOR_RESET << endl;
 }
 
-void console::warn(const char *arg)
+void console::warn(string arg)
 {
     clog << ANSI_COLOR_YELLOW << arg << ANSI_COLOR_RESET << endl;
 }
@@ -73,7 +73,7 @@ void console::clear()
     }
 }
 
-void console::time(const char *tag)
+void console::time(string tag)
 {
     bool isOnTheVector = false;
     for (auto &infoTime : Time_Arr)
@@ -111,7 +111,7 @@ void console::time()
     Time_Arr.push_back(time);
 }
 
-void console::timeEnd(const char *tag)
+void console::timeEnd(string tag)
 {
     bool isOnTheVector = false;
     size_t index = 0;
